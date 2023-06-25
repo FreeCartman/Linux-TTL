@@ -13,24 +13,24 @@ if [ $EUID -ne 0 ]; then
 fi
 
 if  [ "$ttl" -gt "6" -a "$ttl" -lt "300" ] ; then
-        iptables -t mangle -A POSTROUTING -j TTL --ttl-set $ttl 2>/dev/null
-        printf "\nВыбран и установлен TTL=$ttl хорошего серфинга друг!\n"
+        iptables -t mangle -A POSTROUTING -j TTL --ttl-set ttl 2>/dev/null
+        printf "\nВыбран и установлен TTL=ttl хорошего серфинга друг!\n"
         #echo "Выбран и установлен TTL=$ttl хорошего серфинга друг!"
         exit 1
 
-        elif (( $ttl == 0 || $ttl < 0 )); then
+        elif (( ttl == 0 || ttl < 0 )); then
             echo "Вы ввели <$ttl> это некоректное значение TTL, попробуйте ввести другое значение"
             exit 1
 
-        elif (( $ttl <= 5 )); then
+        elif (( ttl <= 5 )); then
             echo "Вы ввели очень маленький TTL=$ttl, попробуйте ввести большее значение"
             exit 1
 
-        elif (( $ttl > 300 )); then
+        elif (( ttl > 300 )); then
             echo "Вы ввели очень большой TTL=$ttl, попробуйте ввести меньшее значение"
             exit 1
         else
             exit 1
 fi
 
-echo "Выбран и установлен TTL=$ttl2 хорошего серфинга"
+echo "Выбран и установлен TTL=$ttl хорошего серфинга"
